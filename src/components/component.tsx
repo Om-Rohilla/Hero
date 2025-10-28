@@ -209,6 +209,21 @@ export const CometHero: React.FC<CometHeroProps> = ({
         <div className="planet-texture" />
         <div className="planet-surface-detail" />
         <div className="planet-shine-effect" />
+        <div className="planet-rotation-markers" />
+        
+        {/* Orbiting Asteroids/Stones */}
+        <div className="planet-orbit-container">
+          <div className="orbital-stone stone-1" />
+          <div className="orbital-stone stone-2" />
+          <div className="orbital-stone stone-3" />
+          <div className="orbital-stone stone-4" />
+          <div className="orbital-stone stone-5" />
+          <div className="orbital-stone stone-6" />
+          <div className="orbital-stone stone-7" />
+          <div className="orbital-stone stone-8" />
+          <div className="orbital-stone stone-9" />
+          <div className="orbital-stone stone-10" />
+        </div>
       </div>
 
       {/* LAYER 1: Background Streaks */}

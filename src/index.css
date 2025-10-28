@@ -319,6 +319,11 @@
   }
 }
 
+/* Planet Rotation Markers - Hidden */
+.planet-rotation-markers {
+  display: none;
+}
+
 /* Planet Shine Effect - Intermittent Glints */
 .planet-shine-effect {
   position: absolute;
@@ -390,6 +395,261 @@
   100% {
     opacity: 0.6;
     transform: translateZ(0) scale(1) translateX(0);
+  }
+}
+
+/* ============================================
+   ORBITING ASTEROIDS/STONES
+   ============================================ */
+
+.planet-orbit-container {
+  position: absolute;
+  inset: -80px;
+  pointer-events: none;
+  transform: translateZ(0);
+}
+
+/* Individual Orbital Stone */
+.orbital-stone {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: 
+    radial-gradient(
+      ellipse at 35% 25%,
+      rgba(255, 255, 255, 0.4) 0%,
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 30% 30%,
+      rgba(200, 180, 160, 1) 0%,
+      rgba(140, 120, 100, 0.95) 40%,
+      rgba(100, 85, 70, 0.9) 70%,
+      rgba(60, 50, 40, 0.85) 100%
+    );
+  box-shadow: 
+    inset -3px -3px 6px rgba(0, 0, 0, 0.7),
+    inset 2px 2px 3px rgba(255, 255, 255, 0.4),
+    0 0 10px rgba(180, 160, 140, 0.5),
+    0 3px 8px rgba(0, 0, 0, 0.6),
+    0 0 20px rgba(251, 191, 36, 0.2);
+  transform-origin: center center;
+  will-change: transform;
+  animation: stone-wobble 3s ease-in-out infinite;
+  position: relative;
+}
+
+/* Add subtle texture to stones */
+.orbital-stone::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: 
+    repeating-linear-gradient(
+      45deg,
+      transparent 0px,
+      rgba(100, 80, 60, 0.2) 1px,
+      transparent 2px,
+      transparent 3px
+    );
+  opacity: 0.6;
+}
+
+/* Stone 1 - Close orbit, fast */
+.stone-1 {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-1 12s linear infinite, stone-wobble 2.5s ease-in-out infinite;
+}
+
+@keyframes orbit-1 {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg) translateX(160px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(360deg) translateX(160px) rotate(-360deg);
+  }
+}
+
+/* Stone 2 - Medium orbit, medium speed */
+.stone-2 {
+  width: 7px;
+  height: 7px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-2 18s linear infinite, stone-wobble 3.2s ease-in-out infinite;
+}
+
+@keyframes orbit-2 {
+  0% {
+    transform: translate(-50%, -50%) rotate(45deg) translateX(195px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(405deg) translateX(195px) rotate(-360deg);
+  }
+}
+
+/* Stone 3 - Far orbit, slow */
+.stone-3 {
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-3 24s linear infinite, stone-wobble 4s ease-in-out infinite;
+}
+
+@keyframes orbit-3 {
+  0% {
+    transform: translate(-50%, -50%) rotate(120deg) translateX(220px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(480deg) translateX(220px) rotate(-360deg);
+  }
+}
+
+/* Stone 4 - Close orbit, reverse direction */
+.stone-4 {
+  width: 9px;
+  height: 9px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-4 15s linear infinite reverse, stone-wobble 2.8s ease-in-out infinite;
+}
+
+@keyframes orbit-4 {
+  0% {
+    transform: translate(-50%, -50%) rotate(180deg) translateX(170px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(540deg) translateX(170px) rotate(-360deg);
+  }
+}
+
+/* Stone 5 - Medium orbit, different angle */
+.stone-5 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-5 20s linear infinite, stone-wobble 3.5s ease-in-out infinite;
+}
+
+@keyframes orbit-5 {
+  0% {
+    transform: translate(-50%, -50%) rotate(270deg) translateX(185px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(630deg) translateX(185px) rotate(-360deg);
+  }
+}
+
+/* Stone 6 - Far orbit, slowest */
+.stone-6 {
+  width: 5px;
+  height: 5px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-6 28s linear infinite, stone-wobble 4.5s ease-in-out infinite;
+}
+
+@keyframes orbit-6 {
+  0% {
+    transform: translate(-50%, -50%) rotate(315deg) translateX(210px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(675deg) translateX(210px) rotate(-360deg);
+  }
+}
+
+/* Stone 7 - Very close orbit, very fast */
+.stone-7 {
+  width: 11px;
+  height: 11px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-7 10s linear infinite, stone-wobble 2.3s ease-in-out infinite;
+}
+
+@keyframes orbit-7 {
+  0% {
+    transform: translate(-50%, -50%) rotate(90deg) translateX(150px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(450deg) translateX(150px) rotate(-360deg);
+  }
+}
+
+/* Stone 8 - Medium-far orbit, counter-clockwise */
+.stone-8 {
+  width: 7px;
+  height: 7px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-8 22s linear infinite reverse, stone-wobble 3.8s ease-in-out infinite;
+}
+
+@keyframes orbit-8 {
+  0% {
+    transform: translate(-50%, -50%) rotate(200deg) translateX(205px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(560deg) translateX(205px) rotate(-360deg);
+  }
+}
+
+/* Stone 9 - Close-medium orbit */
+.stone-9 {
+  width: 9px;
+  height: 9px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-9 16s linear infinite, stone-wobble 3.1s ease-in-out infinite;
+}
+
+@keyframes orbit-9 {
+  0% {
+    transform: translate(-50%, -50%) rotate(150deg) translateX(175px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(510deg) translateX(175px) rotate(-360deg);
+  }
+}
+
+/* Stone 10 - Very far orbit, slowest */
+.stone-10 {
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-10 30s linear infinite, stone-wobble 4.2s ease-in-out infinite;
+}
+
+@keyframes orbit-10 {
+  0% {
+    transform: translate(-50%, -50%) rotate(240deg) translateX(230px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(600deg) translateX(230px) rotate(-360deg);
+  }
+}
+
+/* Stone wobble effect - adds organic movement */
+@keyframes stone-wobble {
+  0%, 100% {
+    filter: brightness(1) drop-shadow(0 0 3px rgba(180, 160, 140, 0.6));
+  }
+  25% {
+    filter: brightness(1.3) drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+  }
+  50% {
+    filter: brightness(0.85) drop-shadow(0 0 2px rgba(180, 160, 140, 0.4));
+  }
+  75% {
+    filter: brightness(1.15) drop-shadow(0 0 4px rgba(251, 191, 36, 0.7));
   }
 }
 
@@ -767,6 +1027,18 @@
     height: 240px;
   }
 
+  /* Scale orbital stones for tablets */
+  .stone-1 { width: 8px; height: 8px; }
+  .stone-2 { width: 6px; height: 6px; }
+  .stone-3 { width: 5px; height: 5px; }
+  .stone-4 { width: 7px; height: 7px; }
+  .stone-5 { width: 6px; height: 6px; }
+  .stone-6 { width: 4px; height: 4px; }
+  .stone-7 { width: 9px; height: 9px; }
+  .stone-8 { width: 6px; height: 6px; }
+  .stone-9 { width: 7px; height: 7px; }
+  .stone-10 { width: 5px; height: 5px; }
+
   /* Reduce streak count on tablets */
   .comet-streaks-layer-1 .comet-streak:nth-child(n + 4) {
     display: none;
@@ -788,6 +1060,22 @@
     width: 190px;
     height: 190px;
   }
+
+  /* Hide some orbital stones on mobile for performance */
+  .stone-5,
+  .stone-6,
+  .stone-8,
+  .stone-10 {
+    display: none;
+  }
+
+  /* Scale remaining orbital stones for mobile */
+  .stone-1 { width: 7px; height: 7px; }
+  .stone-2 { width: 5px; height: 5px; }
+  .stone-3 { width: 4px; height: 4px; }
+  .stone-4 { width: 6px; height: 6px; }
+  .stone-7 { width: 8px; height: 8px; }
+  .stone-9 { width: 6px; height: 6px; }
 
   /* Reduce particles on mobile */
   .comet-particle:nth-child(n + 30) {
@@ -824,6 +1112,18 @@
     height: 160px;
   }
 
+  /* Hide more orbital stones on small mobile */
+  .stone-3,
+  .stone-4,
+  .stone-9 {
+    display: none;
+  }
+
+  /* Scale remaining orbital stones for small mobile */
+  .stone-1 { width: 6px; height: 6px; }
+  .stone-2 { width: 4px; height: 4px; }
+  .stone-7 { width: 7px; height: 7px; }
+
   /* Further reduce on small mobile */
   .comet-particle:nth-child(n + 20) {
     display: none;
@@ -846,7 +1146,9 @@
   .planet-atmosphere,
   .planet-texture,
   .planet-surface-detail,
-  .planet-shine-effect {
+  .planet-shine-effect,
+  .planet-rotation-markers,
+  .orbital-stone {
     animation: none !important;
   }
 
@@ -860,6 +1162,11 @@
 
   .comet-hero-planet {
     opacity: 0.6 !important;
+  }
+
+  /* Hide orbital stones in reduced motion mode */
+  .orbital-stone {
+    display: none;
   }
 
   * {
@@ -896,7 +1203,8 @@
 .comet-particle,
 .comet-hero-gradient,
 .comet-hero-radial-glow,
-.comet-hero-content {
+.comet-hero-content,
+.orbital-stone {
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
