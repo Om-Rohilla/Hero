@@ -202,6 +202,15 @@ export const CometHero: React.FC<CometHeroProps> = ({
       {/* Radial Glow Effect */}
       <div className="comet-hero-radial-glow" />
 
+      {/* Jupiter-like Planet Sphere */}
+      <div className="comet-hero-planet">
+        <div className="planet-core" />
+        <div className="planet-atmosphere" />
+        <div className="planet-texture" />
+        <div className="planet-surface-detail" />
+        <div className="planet-shine-effect" />
+      </div>
+
       {/* LAYER 1: Background Streaks */}
       <div className="comet-streaks-layer comet-streaks-layer-1">
         {streaks
