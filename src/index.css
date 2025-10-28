@@ -99,8 +99,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 320px;
-  height: 320px;
+  width: 280px;
+  height: 280px;
   transform: translate(-50%, -50%) translateZ(0);
   z-index: 7;
   pointer-events: none;
@@ -142,7 +142,7 @@
     0 0 80px rgba(139, 69, 19, 0.3),
     0 0 120px rgba(160, 82, 45, 0.15);
   transform: translateZ(0);
-  animation: planet-rotate 30s linear infinite;
+  animation: planet-rotate 25s linear infinite;
 }
 
 /* Planet Atmosphere - Soft Glow Layer */
@@ -167,7 +167,7 @@
   filter: blur(18px);
   opacity: 0.75;
   transform: translateZ(0);
-  animation: atmosphere-pulse 8s ease-in-out infinite;
+  animation: atmosphere-pulse 8s ease-in-out infinite, atmosphere-rotate 30s linear infinite;
 }
 
 /* Planet Texture - Organic Grain & Bands */
@@ -265,7 +265,7 @@
     );
   mix-blend-mode: soft-light;
   filter: blur(0.3px);
-  animation: texture-shift 40s linear infinite;
+  animation: texture-shift 35s linear infinite;
 }
 
 /* Planet Surface Detail - Additional organic patterns */
@@ -307,7 +307,7 @@
     );
   mix-blend-mode: multiply;
   filter: blur(1px);
-  animation: surface-detail-rotate 50s linear infinite reverse;
+  animation: surface-detail-rotate 45s linear infinite reverse;
 }
 
 @keyframes surface-detail-rotate {
@@ -403,7 +403,7 @@
   }
 }
 
-/* Planet Rotation (subtle) */
+/* Planet Rotation - Visible spinning effect */
 @keyframes planet-rotate {
   0% {
     transform: translateZ(0) rotate(0deg);
@@ -417,21 +417,38 @@
 @keyframes atmosphere-pulse {
   0%, 100% {
     opacity: 0.7;
-    transform: translateZ(0) scale(1);
   }
   50% {
     opacity: 0.9;
-    transform: translateZ(0) scale(1.05);
   }
 }
 
-/* Texture Shift (creates band movement) */
+/* Atmosphere Rotation */
+@keyframes atmosphere-rotate {
+  0% {
+    transform: translateZ(0) rotate(0deg) scale(1);
+  }
+  25% {
+    transform: translateZ(0) rotate(90deg) scale(1.02);
+  }
+  50% {
+    transform: translateZ(0) rotate(180deg) scale(1.05);
+  }
+  75% {
+    transform: translateZ(0) rotate(270deg) scale(1.02);
+  }
+  100% {
+    transform: translateZ(0) rotate(360deg) scale(1);
+  }
+}
+
+/* Texture Shift - Creates rotating band movement */
 @keyframes texture-shift {
   0% {
     transform: translateZ(0) translateX(0) rotate(0deg);
   }
   100% {
-    transform: translateZ(0) translateX(10px) rotate(0.5deg);
+    transform: translateZ(0) translateX(15px) rotate(360deg);
   }
 }
 
@@ -746,8 +763,8 @@
 
   /* Scale planet on tablets */
   .comet-hero-planet {
-    width: 280px;
-    height: 280px;
+    width: 240px;
+    height: 240px;
   }
 
   /* Reduce streak count on tablets */
@@ -768,8 +785,8 @@
 
   /* Scale planet for mobile */
   .comet-hero-planet {
-    width: 220px;
-    height: 220px;
+    width: 190px;
+    height: 190px;
   }
 
   /* Reduce particles on mobile */
@@ -803,8 +820,8 @@
 
   /* Scale planet for small mobile */
   .comet-hero-planet {
-    width: 180px;
-    height: 180px;
+    width: 160px;
+    height: 160px;
   }
 
   /* Further reduce on small mobile */
