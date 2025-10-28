@@ -26,17 +26,13 @@ interface Particle {
   opacity: number;
 }
 
-interface Streak {
+interface TwinklingStar {
   id: number;
-  layer: 1 | 2 | 3;
-  startX: number;
-  startY: number;
+  x: number;
+  y: number;
+  size: number;
   duration: number;
   delay: number;
-  opacity: number;
-  scale: number;
-  blur: number;
-  gradient: string;
 }
 
 export const CometHero: React.FC<CometHeroProps> = ({
@@ -48,87 +44,18 @@ export const CometHero: React.FC<CometHeroProps> = ({
   theme = {},
   className = '',
 }) => {
-  const speedMultiplier = {
-    slow: 1.5,
-    normal: 1,
-    fast: 0.65,
-  }[animationSpeed];
-
-  // Generate advanced multi-layered streaks with GPU optimization
-  const streaks = useMemo<Streak[]>(() => {
-    const allStreaks: Streak[] = [];
-
-    // LAYER 1: Background - Slow, Wide, Subtle
-    const layer1Config = [
-      { gradient: 'blue-dark', opacity: 0.2, duration: 10, blur: 12 },
-      { gradient: 'blue-dark', opacity: 0.18, duration: 12, blur: 14 },
-      { gradient: 'cyan-subtle', opacity: 0.15, duration: 11, blur: 10 },
-      { gradient: 'blue-dark', opacity: 0.22, duration: 9, blur: 13 },
-    ];
-
-    layer1Config.forEach((config, i) => {
-      allStreaks.push({
-        id: `l1-${i}`,
-        layer: 1,
-        startX: -20 + Math.random() * -10,
-        startY: 100 + Math.random() * 20,
-        duration: config.duration * speedMultiplier,
-        delay: i * 0.8,
-        opacity: config.opacity,
-        scale: 1.0,
-        blur: config.blur,
-        gradient: config.gradient,
-      });
-    });
-
-    // LAYER 2: Mid-ground - Medium Speed, Varied Angles
-    const layer2Config = [
-      { gradient: 'cyan-bright', opacity: 0.45, duration: 6.5, blur: 8 },
-      { gradient: 'white-soft', opacity: 0.5, duration: 7, blur: 10 },
-      { gradient: 'blue-medium', opacity: 0.4, duration: 6, blur: 9 },
-      { gradient: 'cyan-bright', opacity: 0.55, duration: 7.5, blur: 11 },
-      { gradient: 'white-soft', opacity: 0.48, duration: 5.5, blur: 8 },
-    ];
-
-    layer2Config.forEach((config, i) => {
-      allStreaks.push({
-        id: `l2-${i}`,
-        layer: 2,
-        startX: -15 + Math.random() * -8,
-        startY: 105 + Math.random() * 15,
-        duration: config.duration * speedMultiplier,
-        delay: i * 0.6 + 0.3,
-        opacity: config.opacity,
-        scale: 1.05,
-        blur: config.blur,
-        gradient: config.gradient,
-      });
-    });
-
-    // LAYER 3: Foreground - Fast, Bright, High Impact
-    const layer3Config = [
-      { gradient: 'white-intense', opacity: 0.85, duration: 4, blur: 6 },
-      { gradient: 'orange-glow', opacity: 0.9, duration: 4.5, blur: 7 },
-      { gradient: 'gold-bright', opacity: 0.8, duration: 3.5, blur: 5 },
-    ];
-
-    layer3Config.forEach((config, i) => {
-      allStreaks.push({
-        id: `l3-${i}`,
-        layer: 3,
-        startX: -10 + Math.random() * -5,
-        startY: 110 + Math.random() * 10,
-        duration: config.duration * speedMultiplier,
-        delay: i * 0.5 + 0.2,
-        opacity: config.opacity,
-        scale: 1.15,
-        blur: config.blur,
-        gradient: config.gradient,
-      });
-    });
-
-    return allStreaks;
-  }, [speedMultiplier]);
+  // Generate twinkling stars for background
+  const twinklingStars = useMemo<TwinklingStar[]>(() => {
+    const starCount = 35; // More stars for richer background
+    return Array.from({ length: starCount }, (_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100,
+      size: Math.random() * 2.5 + 0.5, // 0.5px to 3px
+      duration: Math.random() * 3 + 2, // 2-5 seconds
+      delay: Math.random() * 5, // Staggered start
+    }));
+  }, []);
 
   // Generate optimized particles with varied characteristics
   const particles = useMemo<Particle[]>(() => {
@@ -196,6 +123,24 @@ export const CometHero: React.FC<CometHeroProps> = ({
       {/* Animated Background Gradient */}
       <div className="comet-hero-gradient" />
 
+      {/* Twinkling Stars Background */}
+      <div className="twinkling-stars-container">
+        {twinklingStars.map((star) => (
+          <div
+            key={star.id}
+            className="twinkling-star"
+            style={{
+              left: `${star.x}%`,
+              top: `${star.y}%`,
+              width: `${star.size}px`,
+              height: `${star.size}px`,
+              animationDuration: `${star.duration}s`,
+              animationDelay: `${star.delay}s`,
+            }}
+          />
+        ))}
+      </div>
+
       {/* Dynamic Vignette */}
       <div className="comet-hero-vignette" />
 
@@ -224,78 +169,6 @@ export const CometHero: React.FC<CometHeroProps> = ({
           <div className="orbital-stone stone-9" />
           <div className="orbital-stone stone-10" />
         </div>
-      </div>
-
-      {/* LAYER 1: Background Streaks */}
-      <div className="comet-streaks-layer comet-streaks-layer-1">
-        {streaks
-          .filter((s) => s.layer === 1)
-          .map((streak) => (
-            <div
-              key={streak.id}
-              className={`comet-streak comet-streak-${streak.gradient}`}
-              style={
-                {
-                  '--streak-start-x': `${streak.startX}%`,
-                  '--streak-start-y': `${streak.startY}%`,
-                  '--streak-duration': `${streak.duration}s`,
-                  '--streak-delay': `${streak.delay}s`,
-                  '--streak-opacity': streak.opacity,
-                  '--streak-scale': streak.scale,
-                  '--streak-blur': `${streak.blur}px`,
-                } as React.CSSProperties
-              }
-              data-layer="1"
-            />
-          ))}
-      </div>
-
-      {/* LAYER 2: Mid-ground Streaks */}
-      <div className="comet-streaks-layer comet-streaks-layer-2">
-        {streaks
-          .filter((s) => s.layer === 2)
-          .map((streak) => (
-            <div
-              key={streak.id}
-              className={`comet-streak comet-streak-${streak.gradient}`}
-              style={
-                {
-                  '--streak-start-x': `${streak.startX}%`,
-                  '--streak-start-y': `${streak.startY}%`,
-                  '--streak-duration': `${streak.duration}s`,
-                  '--streak-delay': `${streak.delay}s`,
-                  '--streak-opacity': streak.opacity,
-                  '--streak-scale': streak.scale,
-                  '--streak-blur': `${streak.blur}px`,
-                } as React.CSSProperties
-              }
-              data-layer="2"
-            />
-          ))}
-      </div>
-
-      {/* LAYER 3: Foreground Streaks */}
-      <div className="comet-streaks-layer comet-streaks-layer-3">
-        {streaks
-          .filter((s) => s.layer === 3)
-          .map((streak) => (
-            <div
-              key={streak.id}
-              className={`comet-streak comet-streak-${streak.gradient}`}
-              style={
-                {
-                  '--streak-start-x': `${streak.startX}%`,
-                  '--streak-start-y': `${streak.startY}%`,
-                  '--streak-duration': `${streak.duration}s`,
-                  '--streak-delay': `${streak.delay}s`,
-                  '--streak-opacity': streak.opacity,
-                  '--streak-scale': streak.scale,
-                  '--streak-blur': `${streak.blur}px`,
-                } as React.CSSProperties
-              }
-              data-layer="3"
-            />
-          ))}
       </div>
 
       {/* Enhanced Particles */}
