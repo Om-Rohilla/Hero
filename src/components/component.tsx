@@ -433,7 +433,9 @@ export const CometHero: React.FC<CometHeroProps> = ({
         transition={{ duration: 1.3, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
       >
         <h1 className="comet-main-heading">
-          Transform <span className="gradient-text">AI</span> with <span className="gradient-text">Cosmic</span> Intelligence
+          <span className="heading-line-1">Transform <span className="gradient-text">AI</span></span>
+          <br />
+          <span className="heading-line-2">with <span className="gradient-text">Cosmic</span> Intelligence</span>
         </h1>
       </motion.div>
 
