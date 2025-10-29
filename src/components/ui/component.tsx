@@ -337,12 +337,12 @@ export const CometHero: React.FC<CometHeroProps> = ({
 }) => {
   // Generate twinkling stars for background
   const twinklingStars = useMemo<TwinklingStar[]>(() => {
-    const starCount = 35; // More stars for richer background
+    const starCount = 80; // Much more stars for rich starfield
     return Array.from({ length: starCount }, (_, i) => ({
       id: i,
       x: Math.random() * 100,
       y: Math.random() * 100,
-      size: Math.random() * 2.5 + 0.5, // 0.5px to 3px
+      size: Math.random() * 1.8 + 0.3, // 0.3px to 2.1px (smaller)
       duration: Math.random() * 3 + 2, // 2-5 seconds
       delay: Math.random() * 5, // Staggered start
     }));
