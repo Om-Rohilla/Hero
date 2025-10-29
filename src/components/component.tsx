@@ -301,7 +301,7 @@ const CursorTrail: React.FC = () => {
 };
 
 export const CometHero: React.FC<CometHeroProps> = ({
-  title = 'Transform your AI business with cosmic intelligence.',
+  title = 'Transform AI with Cosmic Intelligence.',
   subtitle = 'Build, automate, and scale on Comet.',
   animationSpeed = 'normal',
   showParticles = true,
@@ -412,6 +412,31 @@ export const CometHero: React.FC<CometHeroProps> = ({
       {/* Radial Glow Effect */}
       <div className="comet-hero-radial-glow" />
 
+      {/* COMET Label - Top Center */}
+      <motion.div
+        className="comet-label-container"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <div className="comet-label">
+          <span className="comet-label-text">COMET</span>
+          <div className="comet-label-shine" />
+        </div>
+      </motion.div>
+
+      {/* Main Heading - Between COMET and Planet */}
+      <motion.div
+        className="comet-main-heading-container"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.3, delay: 0.5, ease: [0.16, 1, 0.3, 1] }}
+      >
+        <h1 className="comet-main-heading">
+          Transform <span className="gradient-text">AI</span> with <span className="gradient-text">Cosmic</span> Intelligence
+        </h1>
+      </motion.div>
+
       {/* Jupiter-like Planet Sphere */}
       <div className="comet-hero-planet">
         <div className="planet-core" />
@@ -465,30 +490,14 @@ export const CometHero: React.FC<CometHeroProps> = ({
         </div>
       )}
 
-      {/* Content with Enhanced Animations */}
+      {/* Subtitle - Bottom Center */}
       <motion.div
-        className="comet-hero-content"
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <motion.h1
-          className="comet-hero-title"
-          variants={titleVariants}
-          style={{ color: theme.accentColor || '#ffffff' }}
-        >
-          Transform your <span className="highlight-text">AI business</span> with cosmic intelligence.
-        </motion.h1>
-      </motion.div>
-
-      {/* Subtitle Below Planet */}
-      <motion.div
-        className="comet-hero-subtitle-container"
-        initial={{ opacity: 0, y: 30 }}
+        className="comet-subtitle-bottom-right"
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1.2, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
+        transition={{ duration: 1, delay: 1.3, ease: [0.16, 1, 0.3, 1] }}
       >
-        <p className="comet-hero-subtitle-bottom">
+        <p className="comet-subtitle-text">
           {subtitle}
         </p>
       </motion.div>

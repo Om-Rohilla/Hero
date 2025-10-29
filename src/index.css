@@ -112,40 +112,33 @@
   background: radial-gradient(
     ellipse at center,
     transparent 0%,
-    rgba(10, 22, 40, 0.3) 60%,
-    rgba(10, 22, 40, 0.7) 85%,
-    rgba(10, 22, 40, 0.95) 100%
+    transparent 40%,
+    rgba(10, 22, 40, 0.2) 70%,
+    rgba(10, 22, 40, 0.6) 90%,
+    rgba(10, 22, 40, 0.85) 100%
   );
   z-index: 2;
   transform: translateZ(0);
+  pointer-events: none;
 }
 
-/* Radial Glow Effect */
+/* Radial Glow Effect - Soft and Seamless */
 .comet-hero-radial-glow {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120%;
-  height: 120%;
+  width: 100%;
+  height: 100%;
   transform: translate(-50%, -50%) translateZ(0);
   background: radial-gradient(
-    circle at center,
-    rgba(59, 130, 246, 0.1) 0%,
-    transparent 60%
+    ellipse at center,
+    rgba(59, 130, 246, 0.05) 0%,
+    rgba(96, 165, 250, 0.03) 25%,
+    transparent 50%
   );
   z-index: 2;
-  animation: glow-pulse 6s ease-in-out infinite;
-}
-
-@keyframes glow-pulse {
-  0%, 100% {
-    opacity: 0.5;
-    transform: translate(-50%, -50%) translateZ(0) scale(1);
-  }
-  50% {
-    opacity: 0.8;
-    transform: translate(-50%, -50%) translateZ(0) scale(1.1);
-  }
+  pointer-events: none;
+  opacity: 0.6;
 }
 
 /* ============================================
@@ -156,13 +149,14 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 280px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   transform: translate(-50%, -50%) translateZ(0);
-  z-index: 7;
+  z-index: 5;
   pointer-events: none;
-  filter: blur(0.6px);
-  opacity: 0.9;
+  filter: drop-shadow(0 0 60px rgba(249, 115, 22, 0.25))
+          drop-shadow(0 0 100px rgba(251, 146, 60, 0.15));
+  opacity: 1;
   animation: planet-float 20s ease-in-out infinite;
 }
 
@@ -997,103 +991,174 @@
 }
 
 /* ============================================
-   CONTENT LAYER
+   TEXT CONTENT LAYER
    ============================================ */
 
-.comet-hero-content {
-  position: relative;
-  z-index: 10;
-  text-align: center;
-  padding: 2rem;
-  max-width: 1100px;
-  transform: translateZ(0);
-}
-
-/* Title - Clean Modern Typography */
-.comet-hero-title {
-  font-size: clamp(1.75rem, 4vw, 3.25rem);
-  font-weight: 500;
-  line-height: 1.35;
-  color: #e2e8f0;
-  letter-spacing: -0.01em;
-  margin: 0;
-  text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
-  transform: translateZ(0);
-  position: relative;
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
-}
-
-/* Highlight Text - "AI business" Special Styling */
-.highlight-text {
+/* Gradient Text - "AI" and "Cosmic" Styling */
+.gradient-text {
   background: linear-gradient(
     135deg,
-    #a855f7 0%,
-    #ec4899 35%,
-    #f97316 70%,
-    #facc15 100%
+    #f97316 0%,
+    #fb923c 30%,
+    #ec4899 70%,
+    #f472b6 100%
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  font-weight: 700;
+  font-weight: 600;
   position: relative;
   display: inline-block;
   text-shadow: none;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.015em;
 }
 
-.highlight-text::before {
+.gradient-text::before {
   content: '';
   position: absolute;
-  inset: -8px -12px;
-  background: linear-gradient(
-    135deg,
-    rgba(168, 85, 247, 0.15) 0%,
-    rgba(236, 72, 153, 0.12) 50%,
-    rgba(249, 115, 22, 0.1) 100%
+  inset: -5px -8px;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(249, 115, 22, 0.15) 0%,
+    rgba(236, 72, 153, 0.12) 60%,
+    transparent 100%
   );
   border-radius: 8px;
   z-index: -1;
-  filter: blur(20px);
-  opacity: 0.8;
-  animation: highlight-pulse 4s ease-in-out infinite;
+  filter: blur(12px);
+  opacity: 0.6;
+  animation: gradient-pulse 3.5s ease-in-out infinite;
 }
 
-@keyframes highlight-pulse {
+@keyframes gradient-pulse {
   0%, 100% {
-    opacity: 0.6;
-    transform: scale(1);
+    opacity: 0.4;
+    transform: scale(0.98);
   }
   50% {
-    opacity: 1;
-    transform: scale(1.05);
+    opacity: 0.8;
+    transform: scale(1.01);
   }
 }
 
-/* Subtitle Container - Positioned Below Planet */
-.comet-hero-subtitle-container {
+/* COMET Label - Top Center */
+.comet-label-container {
+  position: absolute;
+  top: 19%;
+  left: 0%;
+  transform: translateX(-50%);
+  z-index: 6;
+  text-align: center;
+  width: 100%;
+}
+
+.comet-label {
+  position: relative;
+  display: inline-block;
+  padding: 0.15rem 0;
+}
+
+.comet-label-text {
+  font-family: 'Plus Jakarta Sans', 'Sora', 'Inter', -apple-system, system-ui, sans-serif;
+  font-size: clamp(1.5rem, 1.5vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.4em;
+  color: #ffffff;
+  text-shadow: 
+    0 0 25px rgba(168, 85, 247, 0.5),
+    0 0 50px rgba(59, 130, 246, 0.3),
+    0 2px 15px rgba(0, 0, 0, 0.8);
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+/* Shimmering Shine Effect - Every 4-5 seconds */
+.comet-label-shine {
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    transparent 35%,
+    rgba(255, 255, 255, 0.7) 50%,
+    rgba(168, 85, 247, 0.5) 52%,
+    transparent 65%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  animation: shine-sweep 4.5s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 3;
+  mix-blend-mode: screen;
+  border-radius: 6px;
+}
+
+@keyframes shine-sweep {
+  0%, 15% {
+    background-position: 200% 0;
+    opacity: 0;
+  }
+  30% {
+    opacity: 1;
+  }
+  50% {
+    background-position: -200% 0;
+    opacity: 1;
+  }
+  65%, 100% {
+    background-position: -200% 0;
+    opacity: 0;
+  }
+}
+
+/* Main Heading - Between COMET and Planet */
+.comet-main-heading-container {
+  position: absolute;
+  top: 45%;
+  left: 25%;
+  transform: translateX(-50%);
+  z-index: 6;
+  text-align: center;
+  max-width: 900px;
+  padding: 0 2rem;
+}
+
+.comet-main-heading {
+  font-family: 'Plus Jakarta Sans', 'Sora', 'Inter', -apple-system, system-ui, sans-serif;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 500;
+  line-height: 1.3;
+  color: #f8fafc;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-shadow: 0 2px 25px rgba(0, 0, 0, 0.6);
+  transform: translateZ(0);
+}
+
+/* Subtitle - Bottom Center */
+.comet-subtitle-bottom-right {
   position: absolute;
   bottom: 15%;
-  left: 50%;
+  left: 19%;
   transform: translateX(-50%);
   z-index: 8;
   text-align: center;
   width: 100%;
-  max-width: 700px;
+  max-width: 900px;
   padding: 0 2rem;
 }
 
-/* Subtitle - Below Planet */
-.comet-hero-subtitle-bottom {
-  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
-  font-weight: 400;
-  line-height: 1.6;
+.comet-subtitle-text {
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, system-ui, sans-serif;
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  font-weight: 700;
+  line-height: 1.5;
   color: #cbd5e1;
-  letter-spacing: 0.01em;
+  letter-spacing: 0.02em;
   margin: 0;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
   transform: translateZ(0);
-  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 }
 
 /* ============================================
@@ -1101,16 +1166,29 @@
    ============================================ */
 
 @media (max-width: 1024px) {
-  .comet-hero-title {
-    font-size: clamp(1.5rem, 3.5vw, 2.75rem);
+  .comet-label-container {
+    top: 12%;
   }
 
-  .comet-hero-subtitle-bottom {
-    font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+  .comet-label-text {
+    font-size: clamp(0.9rem, 1.3vw, 1.3rem);
+    letter-spacing: 0.35em;
   }
 
-  .comet-hero-subtitle-container {
-    bottom: 12%;
+  .comet-main-heading-container {
+    top: 32%;
+  }
+
+  .comet-main-heading {
+    font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+  }
+
+  .comet-subtitle-bottom-right {
+    bottom: 7%;
+  }
+
+  .comet-subtitle-text {
+    font-size: clamp(0.8rem, 1.2vw, 0.98rem);
   }
 
   /* Scale planet on tablets */
@@ -1138,16 +1216,29 @@
 }
 
 @media (max-width: 768px) {
-  .comet-hero-title {
+  .comet-label-container {
+    top: 10%;
+  }
+
+  .comet-label-text {
+    font-size: clamp(0.85rem, 1.2vw, 1.1rem);
+    letter-spacing: 0.3em;
+  }
+
+  .comet-main-heading-container {
+    top: 30%;
+  }
+
+  .comet-main-heading {
     font-size: clamp(1.35rem, 4.5vw, 2.25rem);
   }
 
-  .comet-hero-subtitle-bottom {
-    font-size: clamp(0.85rem, 1.8vw, 1.05rem);
+  .comet-subtitle-bottom-right {
+    bottom: 6%;
   }
 
-  .comet-hero-subtitle-container {
-    bottom: 10%;
+  .comet-subtitle-text {
+    font-size: clamp(0.75rem, 1.5vw, 0.92rem);
   }
 
   /* Scale planet for mobile */
@@ -1192,16 +1283,29 @@
 }
 
 @media (max-width: 480px) {
-  .comet-hero-title {
-    font-size: clamp(1.15rem, 5.5vw, 1.85rem);
-  }
-  
-  .comet-hero-subtitle-bottom {
-    font-size: clamp(0.8rem, 2vw, 0.95rem);
+  .comet-label-container {
+    top: 8%;
   }
 
-  .comet-hero-subtitle-container {
-    bottom: 8%;
+  .comet-label-text {
+    font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+    letter-spacing: 0.25em;
+  }
+
+  .comet-main-heading-container {
+    top: 28%;
+  }
+
+  .comet-main-heading {
+    font-size: clamp(1.15rem, 5.5vw, 1.85rem);
+  }
+
+  .comet-subtitle-bottom-right {
+    bottom: 5%;
+  }
+
+  .comet-subtitle-text {
+    font-size: clamp(0.7rem, 1.8vw, 0.88rem);
   }
 
   /* Scale planet for small mobile */
@@ -1283,12 +1387,20 @@
     color: #ffffff;
   }
 
-  .highlight-text {
+  .gradient-text {
     -webkit-text-fill-color: #fbbf24;
     font-weight: 800;
   }
 
-  .highlight-text::before {
+  .gradient-text::before {
+    display: none;
+  }
+
+  .comet-label-text {
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.8);
+  }
+
+  .comet-label-shine {
     display: none;
   }
 
