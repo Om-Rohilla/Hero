@@ -156,8 +156,9 @@
   transform: translate(-50%, -50%) translateZ(0);
   z-index: 5;
   pointer-events: none;
-  filter: drop-shadow(0 0 60px rgba(249, 115, 22, 0.25))
-          drop-shadow(0 0 100px rgba(251, 146, 60, 0.15));
+  filter: drop-shadow(0 0 70px rgba(249, 115, 22, 0.4))
+          drop-shadow(0 0 110px rgba(251, 146, 60, 0.3))
+          drop-shadow(0 0 150px rgba(251, 191, 36, 0.15));
   opacity: 1;
   animation: planet-float 20s ease-in-out infinite;
 }
@@ -170,30 +171,30 @@
   background: 
     radial-gradient(
       ellipse at 30% 25%,
-      rgba(251, 146, 60, 0.3) 0%,
+      rgba(180, 100, 50, 0.2) 0%,
       transparent 40%
     ),
     radial-gradient(
       ellipse at 65% 70%,
-      rgba(180, 83, 9, 0.4) 0%,
+      rgba(140, 70, 30, 0.25) 0%,
       transparent 35%
     ),
     radial-gradient(
       circle at 35% 35%,
-      #a0522d 0%,
-      #8b4513 10%,
-      #6b3410 25%,
-      #5a2f0f 40%,
-      #4a2810 55%,
-      #3d1f0f 75%,
-      #2a1508 100%
+      #7a4025 0%,
+      #6b3410 10%,
+      #5a2f0f 25%,
+      #4a2810 40%,
+      #3d1f0f 55%,
+      #2e1808 75%,
+      #1f1005 100%
     );
   box-shadow: 
-    inset -40px -40px 100px rgba(0, 0, 0, 0.8),
-    inset 30px 30px 80px rgba(251, 146, 60, 0.15),
-    inset -10px -10px 60px rgba(139, 69, 19, 0.4),
-    0 0 80px rgba(139, 69, 19, 0.3),
-    0 0 120px rgba(160, 82, 45, 0.15);
+    inset -40px -40px 100px rgba(0, 0, 0, 0.85),
+    inset 30px 30px 80px rgba(180, 100, 50, 0.1),
+    inset -10px -10px 60px rgba(100, 55, 25, 0.3),
+    0 0 80px rgba(100, 55, 25, 0.2),
+    0 0 120px rgba(120, 65, 35, 0.1);
   transform: translateZ(0);
   animation: planet-rotate 25s linear infinite;
 }
@@ -206,19 +207,19 @@
   background: 
     radial-gradient(
       ellipse at 30% 30%,
-      rgba(251, 191, 36, 0.25) 0%,
-      rgba(251, 146, 60, 0.2) 15%,
+      rgba(220, 150, 90, 0.22) 0%,
+      rgba(200, 130, 70, 0.18) 15%,
       transparent 45%
     ),
     radial-gradient(
       circle at 35% 35%,
-      rgba(251, 146, 60, 0.2) 0%,
-      rgba(249, 115, 22, 0.15) 25%,
-      rgba(180, 83, 9, 0.1) 45%,
+      rgba(200, 130, 70, 0.18) 0%,
+      rgba(190, 120, 65, 0.14) 25%,
+      rgba(160, 90, 45, 0.09) 45%,
       transparent 70%
     );
   filter: blur(18px);
-  opacity: 0.75;
+  opacity: 0.7;
   transform: translateZ(0);
   animation: atmosphere-pulse 8s ease-in-out infinite, atmosphere-rotate 30s linear infinite;
 }
@@ -228,96 +229,87 @@
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  opacity: 0.75;
+  opacity: 0.68; /* Balanced brightness */
   transform: translateZ(0);
   background-image: 
     /* Swirling patterns - simulates storms */
     radial-gradient(
       ellipse at 40% 45%,
-      rgba(251, 146, 60, 0.25) 0%,
-      rgba(249, 115, 22, 0.15) 8%,
+      rgba(220, 140, 70, 0.25) 0%,
+      rgba(200, 120, 60, 0.18) 8%,
       transparent 18%
     ),
     radial-gradient(
       ellipse at 70% 30%,
-      rgba(160, 82, 45, 0.2) 0%,
-      rgba(180, 83, 9, 0.12) 8%,
+      rgba(200, 110, 60, 0.22) 0%,
+      rgba(180, 100, 55, 0.16) 8%,
       transparent 15%
     ),
     radial-gradient(
       ellipse at 25% 65%,
-      rgba(180, 83, 9, 0.22) 0%,
-      rgba(160, 82, 45, 0.14) 7%,
+      rgba(190, 100, 50, 0.24) 0%,
+      rgba(170, 90, 50, 0.17) 7%,
       transparent 14%
     ),
     radial-gradient(
       ellipse at 82% 48%,
-      rgba(200, 100, 40, 0.18) 0%,
+      rgba(210, 120, 60, 0.2) 0%,
       transparent 10%
     ),
     radial-gradient(
       ellipse at 15% 28%,
-      rgba(220, 120, 50, 0.15) 0%,
+      rgba(220, 130, 65, 0.18) 0%,
       transparent 9%
     ),
-    /* Horizontal bands (Jupiter-like) - Enhanced */
-    repeating-linear-gradient(
-      0deg,
+    /* Curved wavy bands - More natural planet look */
+    repeating-radial-gradient(
+      ellipse at 50% 50%,
       transparent 0px,
-      rgba(139, 69, 19, 0.45) 1px,
-      rgba(101, 67, 33, 0.35) 2px,
-      transparent 3px,
+      rgba(140, 75, 40, 0.24) 8px,
+      rgba(120, 65, 35, 0.20) 10px,
       transparent 12px,
-      rgba(120, 70, 30, 0.3) 13px,
-      rgba(100, 60, 25, 0.25) 14px,
-      transparent 16px,
       transparent 22px,
-      rgba(139, 69, 19, 0.4) 23px,
-      transparent 25px,
-      transparent 32px,
-      rgba(110, 65, 28, 0.28) 33px,
+      rgba(150, 80, 42, 0.22) 28px,
+      rgba(130, 70, 38, 0.19) 30px,
       transparent 35px,
       transparent 45px
     ),
-    /* Fine diagonal grain - Enhanced */
+    /* Wavy horizontal-ish bands using conic gradient for curve */
+    conic-gradient(
+      from 0deg at 50% 50%,
+      transparent 0deg,
+      rgba(140, 75, 40, 0.18) 20deg,
+      transparent 40deg,
+      transparent 80deg,
+      rgba(150, 80, 42, 0.20) 100deg,
+      transparent 120deg,
+      transparent 160deg,
+      rgba(130, 70, 38, 0.16) 180deg,
+      transparent 200deg,
+      transparent 240deg,
+      rgba(145, 78, 40, 0.19) 260deg,
+      transparent 280deg,
+      transparent 320deg,
+      rgba(140, 75, 40, 0.18) 340deg,
+      transparent 360deg
+    ),
+    /* Subtle organic grain */
     repeating-linear-gradient(
-      45deg,
+      47deg,
       transparent 0px,
-      rgba(160, 82, 45, 0.15) 1px,
+      rgba(120, 65, 35, 0.08) 1px,
       transparent 2px,
-      transparent 5px
+      transparent 6px
     ),
     repeating-linear-gradient(
-      -45deg,
+      -43deg,
       transparent 0px,
-      rgba(139, 69, 19, 0.12) 1px,
+      rgba(110, 60, 30, 0.07) 1px,
       transparent 2px,
-      transparent 7px
-    ),
-    /* Cross-hatch pattern */
-    repeating-linear-gradient(
-      30deg,
-      transparent 0px,
-      rgba(180, 83, 9, 0.08) 1px,
-      transparent 2px,
-      transparent 10px
-    ),
-    repeating-linear-gradient(
-      -30deg,
-      transparent 0px,
-      rgba(160, 82, 45, 0.06) 1px,
-      transparent 2px,
-      transparent 12px
-    ),
-    /* Noise texture simulation */
-    repeating-linear-gradient(
-      90deg,
-      rgba(139, 69, 19, 0.22) 0px,
-      transparent 1px,
-      transparent 2px
+      transparent 8px
     );
   mix-blend-mode: soft-light;
-  filter: blur(0.3px);
+  filter: blur(0.5px); /* Slightly more blur for softer look */
   animation: texture-shift 35s linear infinite;
 }
 
@@ -384,44 +376,44 @@
   border-radius: 50%;
   overflow: hidden;
   transform: translateZ(0);
-  opacity: 1;
+  opacity: 0.85;
   background-image: 
     /* Main highlight shine - top left */
     radial-gradient(
       ellipse 80px 100px at 28% 22%,
-      rgba(255, 255, 255, 0.4) 0%,
-      rgba(255, 255, 255, 0.25) 20%,
-      rgba(251, 191, 36, 0.15) 40%,
+      rgba(255, 255, 255, 0.35) 0%,
+      rgba(255, 255, 255, 0.22) 20%,
+      rgba(230, 170, 100, 0.14) 40%,
       transparent 65%
     ),
     /* Secondary shine */
     radial-gradient(
       ellipse 50px 60px at 35% 35%,
-      rgba(255, 255, 255, 0.3) 0%,
-      rgba(251, 146, 60, 0.2) 30%,
+      rgba(255, 255, 255, 0.28) 0%,
+      rgba(210, 140, 80, 0.16) 30%,
       transparent 60%
     ),
     /* Ambient glow spots */
     radial-gradient(
       ellipse 40px 35px at 65% 42%,
-      rgba(251, 191, 36, 0.25) 0%,
-      rgba(249, 115, 22, 0.15) 40%,
+      rgba(220, 160, 100, 0.2) 0%,
+      rgba(200, 140, 80, 0.14) 40%,
       transparent 70%
     ),
     radial-gradient(
       ellipse 35px 30px at 45% 68%,
-      rgba(255, 200, 100, 0.2) 0%,
+      rgba(230, 170, 110, 0.18) 0%,
       transparent 60%
     ),
     /* Edge highlight - rim light */
     radial-gradient(
       ellipse 120px 120px at 15% 50%,
       transparent 40%,
-      rgba(251, 146, 60, 0.15) 60%,
-      rgba(255, 255, 255, 0.25) 75%,
+      rgba(210, 140, 80, 0.15) 60%,
+      rgba(255, 255, 255, 0.22) 75%,
       transparent 85%
     );
-  filter: blur(8px);
+  filter: blur(9px);
   mix-blend-mode: screen;
   animation: shine-pulse 6s ease-in-out infinite;
   pointer-events: none;
@@ -1205,6 +1197,12 @@
   position: relative;
   display: inline-block;
   padding: 0.15rem 0;
+  cursor: pointer;
+}
+
+/* Activate shimmer animation only on hover */
+.comet-label:hover .comet-label-shine {
+  animation: shine-sweep 2.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .comet-label-text {
@@ -1222,41 +1220,43 @@
   display: inline-block;
 }
 
-/* Shimmering Shine Effect - Every 4-5 seconds */
+/* Shimmering Shine Effect - Hover Only */
 .comet-label-shine {
   position: absolute;
   inset: -2px;
   background: linear-gradient(
     90deg,
     transparent 0%,
-    transparent 35%,
-    rgba(255, 255, 255, 0.7) 50%,
-    rgba(168, 85, 247, 0.5) 52%,
-    transparent 65%,
+    transparent 40%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(168, 85, 247, 0.4) 52%,
+    transparent 60%,
     transparent 100%
   );
-  background-size: 200% 100%;
-  animation: shine-sweep 4.5s ease-in-out infinite;
+  background-size: 300% 100%;
+  background-position: 150% 0; /* Start position off-screen right */
+  animation: none; /* No animation by default */
   pointer-events: none;
   z-index: 3;
   mix-blend-mode: screen;
   border-radius: 6px;
+  opacity: 0; /* Hidden by default */
 }
 
 @keyframes shine-sweep {
-  0%, 15% {
-    background-position: 200% 0;
+  0% {
+    background-position: 150% 0;
     opacity: 0;
   }
-  30% {
+  10% {
     opacity: 1;
   }
-  50% {
-    background-position: -200% 0;
+  90% {
+    background-position: -150% 0;
     opacity: 1;
   }
-  65%, 100% {
-    background-position: -200% 0;
+  100% {
+    background-position: -150% 0;
     opacity: 0;
   }
 }
