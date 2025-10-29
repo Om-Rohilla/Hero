@@ -688,6 +688,150 @@
   }
 }
 
+/* Stone 11 - Medium orbit, fast reverse */
+.stone-11 {
+  width: 7px;
+  height: 7px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-11 14s linear infinite reverse, stone-wobble 2.9s ease-in-out infinite;
+}
+
+@keyframes orbit-11 {
+  0% {
+    transform: translate(-50%, -50%) rotate(60deg) translateX(180px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(420deg) translateX(180px) rotate(-360deg);
+  }
+}
+
+/* Stone 12 - Close orbit, varied speed */
+.stone-12 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-12 13s linear infinite, stone-wobble 3.3s ease-in-out infinite;
+}
+
+@keyframes orbit-12 {
+  0% {
+    transform: translate(-50%, -50%) rotate(300deg) translateX(165px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(660deg) translateX(165px) rotate(-360deg);
+  }
+}
+
+/* Stone 13 - Far orbit, medium speed */
+.stone-13 {
+  width: 6px;
+  height: 6px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-13 26s linear infinite, stone-wobble 4.1s ease-in-out infinite;
+}
+
+@keyframes orbit-13 {
+  0% {
+    transform: translate(-50%, -50%) rotate(135deg) translateX(215px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(495deg) translateX(215px) rotate(-360deg);
+  }
+}
+
+/* Stone 14 - Medium-close orbit, reverse */
+.stone-14 {
+  width: 9px;
+  height: 9px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-14 17s linear infinite reverse, stone-wobble 3.4s ease-in-out infinite;
+}
+
+@keyframes orbit-14 {
+  0% {
+    transform: translate(-50%, -50%) rotate(225deg) translateX(175px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(585deg) translateX(175px) rotate(-360deg);
+  }
+}
+
+/* Stone 15 - Very close orbit, fast */
+.stone-15 {
+  width: 10px;
+  height: 10px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-15 11s linear infinite, stone-wobble 2.4s ease-in-out infinite;
+}
+
+@keyframes orbit-15 {
+  0% {
+    transform: translate(-50%, -50%) rotate(30deg) translateX(155px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(390deg) translateX(155px) rotate(-360deg);
+  }
+}
+
+/* Stone 16 - Medium orbit, slow */
+.stone-16 {
+  width: 7px;
+  height: 7px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-16 21s linear infinite, stone-wobble 3.7s ease-in-out infinite;
+}
+
+@keyframes orbit-16 {
+  0% {
+    transform: translate(-50%, -50%) rotate(330deg) translateX(190px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(690deg) translateX(190px) rotate(-360deg);
+  }
+}
+
+/* Stone 17 - Far orbit, counter-clockwise */
+.stone-17 {
+  width: 5px;
+  height: 5px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-17 27s linear infinite reverse, stone-wobble 4.3s ease-in-out infinite;
+}
+
+@keyframes orbit-17 {
+  0% {
+    transform: translate(-50%, -50%) rotate(105deg) translateX(225px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(465deg) translateX(225px) rotate(-360deg);
+  }
+}
+
+/* Stone 18 - Medium-close orbit, fast */
+.stone-18 {
+  width: 8px;
+  height: 8px;
+  top: 50%;
+  left: 50%;
+  animation: orbit-18 12s linear infinite, stone-wobble 2.7s ease-in-out infinite;
+}
+
+@keyframes orbit-18 {
+  0% {
+    transform: translate(-50%, -50%) rotate(285deg) translateX(168px) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(645deg) translateX(168px) rotate(-360deg);
+  }
+}
+
 /* Stone wobble effect - adds organic movement */
 @keyframes stone-wobble {
   0%, 100% {
@@ -1044,12 +1188,15 @@
 /* COMET Label - Top Center */
 .comet-label-container {
   position: absolute;
-  top: 19%;
-  left: 0%;
-  transform: translateX(-50%);
+  top: 18%;
+  left: 0;
+  right: 0;
   z-index: 6;
   text-align: center;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .comet-label {
@@ -1060,7 +1207,7 @@
 
 .comet-label-text {
   font-family: 'Plus Jakarta Sans', 'Sora', 'Inter', -apple-system, system-ui, sans-serif;
-  font-size: clamp(1.5rem, 1.5vw, 1.5rem);
+  font-size: clamp(1rem, 2vw, 1.5rem);
   font-weight: 700;
   letter-spacing: 0.4em;
   color: #ffffff;
@@ -1112,16 +1259,20 @@
   }
 }
 
-/* Main Heading - Between COMET and Planet */
+/* Main Heading - Centered Vertically with Planet */
 .comet-main-heading-container {
   position: absolute;
-  top:38%;
-  left: 25%;
-  transform: translateX(-50%);
+  top: 40%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
   z-index: 6;
   text-align: center;
-  max-width: 900px;
-  padding: 0 2rem;
+  width: 100%;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .comet-main-heading {
@@ -1134,6 +1285,8 @@
   margin: 0;
   text-shadow: 0 2px 25px rgba(0, 0, 0, 0.6);
   transform: translateZ(0);
+  text-align: center;
+  max-width: 90%;
 }
 
 /* Heading Lines - First and Second Line */
@@ -1143,20 +1296,22 @@
 
 .heading-line-2 {
   display: inline-block;
-  padding-left: 4rem;
+  padding-left: clamp(1rem, 4vw, 4rem);
 }
 
 /* Subtitle - Bottom Center */
 .comet-subtitle-bottom-right {
   position: absolute;
   bottom: 15%;
-  left: 19%;
-  transform: translateX(-50%);
+  left: 0;
+  right: 0;
   z-index: 8;
   text-align: center;
   width: 100%;
-  max-width: 900px;
-  padding: 0 2rem;
+  padding: 0 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .comet-subtitle-text {
@@ -1169,6 +1324,8 @@
   margin: 0;
   text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
   transform: translateZ(0);
+  text-align: center;
+  max-width: 90%;
 }
 
 /* ============================================
@@ -1177,28 +1334,43 @@
 
 @media (max-width: 1024px) {
   .comet-label-container {
-    top: 12%;
+    top: 20%;
   }
 
   .comet-label-text {
-    font-size: clamp(0.9rem, 1.3vw, 1.3rem);
-    letter-spacing: 0.35em;
+    font-size: clamp(0.9rem, 2vw, 1.3rem);
+    letter-spacing: 0.3em;
   }
 
   .comet-main-heading-container {
-    top: 32%;
+    top: 50%;
+    padding: 0 1rem;
+  }
+  
+  .comet-main-heading {
+    max-width: 95%;
   }
 
   .comet-main-heading {
-    font-size: clamp(1.5rem, 3.2vw, 2.5rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    line-height: 1.3;
+  }
+
+  .heading-line-2 {
+    padding-left: clamp(0.75rem, 3vw, 2.5rem);
   }
 
   .comet-subtitle-bottom-right {
-    bottom: 7%;
+    bottom: 17%;
+    padding: 0 1rem;
+  }
+  
+  .comet-subtitle-text {
+    max-width: 95%;
   }
 
   .comet-subtitle-text {
-    font-size: clamp(0.8rem, 1.2vw, 0.98rem);
+    font-size: clamp(0.8rem, 1.8vw, 0.98rem);
   }
 
   /* Scale planet on tablets */
@@ -1218,6 +1390,14 @@
   .stone-8 { width: 6px; height: 6px; }
   .stone-9 { width: 7px; height: 7px; }
   .stone-10 { width: 5px; height: 5px; }
+  .stone-11 { width: 6px; height: 6px; }
+  .stone-12 { width: 7px; height: 7px; }
+  .stone-13 { width: 5px; height: 5px; }
+  .stone-14 { width: 8px; height: 8px; }
+  .stone-15 { width: 9px; height: 9px; }
+  .stone-16 { width: 6px; height: 6px; }
+  .stone-17 { width: 4px; height: 4px; }
+  .stone-18 { width: 7px; height: 7px; }
 
   /* Reduce streak count on tablets */
   .comet-streaks-layer-1 .comet-streak:nth-child(n + 4) {
@@ -1227,28 +1407,43 @@
 
 @media (max-width: 768px) {
   .comet-label-container {
-    top: 10%;
+    top: 22%;
   }
 
   .comet-label-text {
-    font-size: clamp(0.85rem, 1.2vw, 1.1rem);
-    letter-spacing: 0.3em;
+    font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+    letter-spacing: 0.25em;
   }
 
   .comet-main-heading-container {
-    top: 30%;
+    top: 50%;
+    padding: 0 0.75rem;
+  }
+  
+  .comet-main-heading {
+    max-width: 96%;
   }
 
   .comet-main-heading {
-    font-size: clamp(1.35rem, 4.5vw, 2.25rem);
+    font-size: clamp(1.35rem, 5.5vw, 2.25rem);
+    line-height: 1.25;
+  }
+
+  .heading-line-2 {
+    padding-left: clamp(0.5rem, 2.5vw, 2rem);
   }
 
   .comet-subtitle-bottom-right {
-    bottom: 6%;
+    bottom: 20%;
+    padding: 0 0.75rem;
+  }
+  
+  .comet-subtitle-text {
+    max-width: 96%;
   }
 
   .comet-subtitle-text {
-    font-size: clamp(0.75rem, 1.5vw, 0.92rem);
+    font-size: clamp(0.75rem, 2.2vw, 0.92rem);
   }
 
   /* Scale planet for mobile */
@@ -1261,7 +1456,10 @@
   .stone-5,
   .stone-6,
   .stone-8,
-  .stone-10 {
+  .stone-10,
+  .stone-13,
+  .stone-16,
+  .stone-17 {
     display: none;
   }
 
@@ -1272,6 +1470,11 @@
   .stone-4 { width: 6px; height: 6px; }
   .stone-7 { width: 8px; height: 8px; }
   .stone-9 { width: 6px; height: 6px; }
+  .stone-11 { width: 5px; height: 5px; }
+  .stone-12 { width: 6px; height: 6px; }
+  .stone-14 { width: 7px; height: 7px; }
+  .stone-15 { width: 7px; height: 7px; }
+  .stone-18 { width: 6px; height: 6px; }
 
   /* Reduce particles on mobile */
   .comet-particle:nth-child(n + 30) {
@@ -1294,40 +1497,59 @@
 
 @media (max-width: 480px) {
   .comet-label-container {
-    top: 8%;
+    top: 25%;
   }
 
   .comet-label-text {
-    font-size: clamp(0.75rem, 1.1vw, 0.95rem);
-    letter-spacing: 0.25em;
+    font-size: clamp(0.7rem, 3vw, 0.95rem);
+    letter-spacing: 0.2em;
   }
 
   .comet-main-heading-container {
-    top: 28%;
+    top: 50%;
+    padding: 0 0.5rem;
+  }
+  
+  .comet-main-heading {
+    max-width: 98%;
   }
 
   .comet-main-heading {
-    font-size: clamp(1.15rem, 5.5vw, 1.85rem);
+    font-size: clamp(1.15rem, 6.5vw, 1.85rem);
+    line-height: 1.2;
+  }
+
+  .heading-line-2 {
+    padding-left: clamp(0.25rem, 2vw, 1.5rem);
   }
 
   .comet-subtitle-bottom-right {
-    bottom: 5%;
+    bottom: 23%;
+    padding: 0 0.5rem;
+  }
+  
+  .comet-subtitle-text {
+    max-width: 98%;
   }
 
   .comet-subtitle-text {
-    font-size: clamp(0.7rem, 1.8vw, 0.88rem);
+    font-size: clamp(0.65rem, 2.5vw, 0.88rem);
   }
 
   /* Scale planet for small mobile */
   .comet-hero-planet {
-    width: 160px;
-    height: 160px;
+    width: 150px;
+    height: 150px;
   }
 
   /* Hide more orbital stones on small mobile */
   .stone-3,
   .stone-4,
-  .stone-9 {
+  .stone-9,
+  .stone-11,
+  .stone-12,
+  .stone-14,
+  .stone-18 {
     display: none;
   }
 
@@ -1335,10 +1557,76 @@
   .stone-1 { width: 6px; height: 6px; }
   .stone-2 { width: 4px; height: 4px; }
   .stone-7 { width: 7px; height: 7px; }
+  .stone-15 { width: 6px; height: 6px; }
 
   /* Further reduce on small mobile */
   .comet-particle:nth-child(n + 20) {
     display: none;
+  }
+}
+
+/* Extra Small Screens - Very Narrow Devices */
+@media (max-width: 360px) {
+  .comet-label-container {
+    top: 27%;
+  }
+
+  .comet-label-text {
+    font-size: clamp(0.65rem, 3.5vw, 0.85rem);
+    letter-spacing: 0.15em;
+  }
+
+  .comet-main-heading-container {
+    top: 50%;
+    padding: 0 0.25rem;
+  }
+  
+  .comet-main-heading {
+    max-width: 100%;
+  }
+
+  .comet-main-heading {
+    font-size: clamp(1rem, 7vw, 1.5rem);
+    line-height: 1.15;
+  }
+
+  .heading-line-2 {
+    padding-left: clamp(0.15rem, 1.5vw, 1rem);
+  }
+
+  .comet-subtitle-bottom-right {
+    bottom: 25%;
+    padding: 0 0.25rem;
+  }
+  
+  .comet-subtitle-text {
+    max-width: 100%;
+  }
+
+  .comet-subtitle-text {
+    font-size: clamp(0.6rem, 3vw, 0.8rem);
+  }
+
+  /* Scale planet for extra small screens */
+  .comet-hero-planet {
+    width: 130px;
+    height: 130px;
+  }
+
+  /* Reduce orbital stones even more */
+  .orbital-stone {
+    opacity: 0.6;
+  }
+
+  .stone-1,
+  .stone-2 {
+    width: 4px !important;
+    height: 4px !important;
+  }
+
+  /* Reduce particle effects for performance */
+  .comet-particle {
+    opacity: 0.5 !important;
   }
 }
 

@@ -1,7 +1,7 @@
 {
   "name": "comet-hero",
   "version": "1.0.0",
-  "description": "Comet-inspired animated hero section component for 21st.dev marketplace",
+  "description": "Premium animated hero section with cosmic planet, shimmer effects, and interactive cursor trail. Built for 21st.dev marketplace with React, TypeScript, and Framer Motion.",
   "type": "module",
   "main": "./src/components/component.tsx",
   "types": "./src/components/component.tsx",
@@ -13,14 +13,37 @@
   },
   "keywords": [
     "react",
+    "react-component",
     "hero-section",
+    "landing-page",
     "animation",
+    "framer-motion",
     "comet",
-    "component",
-    "21st.dev"
+    "cosmic",
+    "space",
+    "planet",
+    "cursor-trail",
+    "shimmer-effect",
+    "typescript",
+    "tailwindcss",
+    "ai",
+    "saas",
+    "component-library",
+    "21st.dev",
+    "ui-component",
+    "responsive",
+    "futuristic"
   ],
-  "author": "",
+  "author": "Your Name <your.email@example.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/comet-hero"
+  },
+  "homepage": "https://github.com/yourusername/comet-hero#readme",
+  "bugs": {
+    "url": "https://github.com/yourusername/comet-hero/issues"
+  },
   "peerDependencies": {
     "react": "^18.0.0",
     "react-dom": "^18.0.0"

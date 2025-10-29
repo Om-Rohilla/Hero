@@ -1,6 +1,8 @@
-import React, { useMemo, useEffect, useRef } from 'react';
+"use client";
+
+import React, { useMemo, useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import '../index.css';
+import '../../index.css';
 
 export interface CometHeroProps {
   title?: string;
@@ -49,8 +51,10 @@ interface CursorParticle {
 
 /**
  * CursorTrail Component - Magical comet-like cursor with colorful particle trail
+ * SSR-safe with mounted state check for 21st.dev compatibility
  */
 const CursorTrail: React.FC = () => {
+  const [mounted, setMounted] = useState(false);
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const particles = useRef<CursorParticle[]>([]);
   const mousePos = useRef({ x: -100, y: -100 });
@@ -58,7 +62,15 @@ const CursorTrail: React.FC = () => {
   const lastMoveTime = useRef(Date.now());
   const animationFrameId = useRef<number>();
 
+  // Mount check for SSR safety
   useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    // Don't run on server or before mount
+    if (!mounted) return;
+    
     const canvas = canvasRef.current;
     if (!canvas) return;
 
@@ -67,18 +79,25 @@ const CursorTrail: React.FC = () => {
 
     // Set canvas size
     const resizeCanvas = () => {
+      if (typeof window === 'undefined') return;
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
     };
     resizeCanvas();
-    window.addEventListener('resize', resizeCanvas);
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('resize', resizeCanvas);
+    }
 
     // Track mouse position
     const handleMouseMove = (e: MouseEvent) => {
       targetPos.current = { x: e.clientX, y: e.clientY };
       lastMoveTime.current = Date.now();
     };
-    window.addEventListener('mousemove', handleMouseMove);
+    
+    if (typeof window !== 'undefined') {
+      window.addEventListener('mousemove', handleMouseMove);
+    }
 
     // Calculate movement speed
     let lastMouseX = 0;
@@ -272,20 +291,27 @@ const CursorTrail: React.FC = () => {
 
     animate();
 
-    // Cleanup
+    // Cleanup with window check for SSR
     return () => {
-      window.removeEventListener('resize', resizeCanvas);
-      window.removeEventListener('mousemove', handleMouseMove);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('resize', resizeCanvas);
+        window.removeEventListener('mousemove', handleMouseMove);
+      }
       if (animationFrameId.current) {
         cancelAnimationFrame(animationFrameId.current);
       }
     };
-  }, []);
+  }, [mounted]); // Re-run when mounted changes
+
+  // Don't render canvas on server - prevents hydration mismatch
+  if (!mounted) return null;
 
   return (
     <canvas
       ref={canvasRef}
       className="cursor-trail-canvas"
+      aria-hidden="true"
+      role="presentation"
       style={{
         position: 'fixed',
         top: 0,
@@ -301,12 +327,12 @@ const CursorTrail: React.FC = () => {
 };
 
 export const CometHero: React.FC<CometHeroProps> = ({
-  title = 'Transform AI with Cosmic Intelligence.',
+  title: _title = 'Transform AI with Cosmic Intelligence.',
   subtitle = 'Build, automate, and scale on Comet.',
-  animationSpeed = 'normal',
+  animationSpeed: _animationSpeed = 'normal',
   showParticles = true,
   particleCount = 50,
-  theme = {},
+  theme: _theme = {},
   className = '',
 }) => {
   // Generate twinkling stars for background
@@ -339,50 +365,11 @@ export const CometHero: React.FC<CometHeroProps> = ({
     });
   }, [particleCount, showParticles]);
 
-  // Enhanced text animation variants
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.3,
-      },
-    },
-  };
-
-  const titleVariants = {
-    hidden: { opacity: 0, y: 40, scale: 0.9, filter: 'blur(20px)' },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      filter: 'blur(0px)',
-      transition: {
-        duration: 1.4,
-        ease: [0.16, 1, 0.3, 1], // Custom easing for smooth entry
-      },
-    },
-  };
-
-  const subtitleVariants = {
-    hidden: { opacity: 0, y: 25, filter: 'blur(10px)' },
-    visible: {
-      opacity: 1,
-      y: 0,
-      filter: 'blur(0px)',
-      transition: {
-        duration: 1.2,
-        ease: [0.16, 1, 0.3, 1],
-      },
-    },
-  };
-
   return (
     <div
       className={`comet-hero-container ${className}`}
       style={{
-        backgroundColor: theme.backgroundColor || '#0a1628',
+        backgroundColor: _theme.backgroundColor || '#0a1628',
       }}
     >
       {/* Animated Background Gradient */}
@@ -460,6 +447,14 @@ export const CometHero: React.FC<CometHeroProps> = ({
           <div className="orbital-stone stone-8" />
           <div className="orbital-stone stone-9" />
           <div className="orbital-stone stone-10" />
+          <div className="orbital-stone stone-11" />
+          <div className="orbital-stone stone-12" />
+          <div className="orbital-stone stone-13" />
+          <div className="orbital-stone stone-14" />
+          <div className="orbital-stone stone-15" />
+          <div className="orbital-stone stone-16" />
+          <div className="orbital-stone stone-17" />
+          <div className="orbital-stone stone-18" />
         </div>
       </div>
 
@@ -510,4 +505,5 @@ export const CometHero: React.FC<CometHeroProps> = ({
   );
 };
 
-export default CometHero;
+// NOTE: Using named export only for 21st.dev compatibility
+// Import as: import { CometHero } from './component';

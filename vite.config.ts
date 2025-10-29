@@ -7,6 +7,7 @@ export default defineConfig({
   server: {
     port: 3000,
     open: true,
+    host: '0.0.0.0',                // ✅ allows LAN & external access
+    allowedHosts: ['.ngrok-free.dev'], // ✅ allows all ngrok tunnels
   },
 });
-
