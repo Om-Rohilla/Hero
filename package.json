@@ -1,10 +1,9 @@
 {
-  "name": "comet-hero",
+  "name": "comet-hero-section",
   "version": "1.0.0",
-  "description": "Premium animated hero section with cosmic planet, shimmer effects, and interactive cursor trail. Built for 21st.dev marketplace with React, TypeScript, and Framer Motion.",
+  "description": "Premium animated hero section with cosmic planet, shimmer effects, and interactive cursor trail. Built for 21st.dev marketplace with React and Framer Motion.",
   "type": "module",
-  "main": "./src/components/component.tsx",
-  "types": "./src/components/component.tsx",
+  "main": "./src/components/ui/component.jsx",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -24,15 +23,16 @@
     "planet",
     "cursor-trail",
     "shimmer-effect",
-    "typescript",
-    "tailwindcss",
+    "javascript",
     "ai",
     "saas",
     "component-library",
     "21st.dev",
     "ui-component",
     "responsive",
-    "futuristic"
+    "futuristic",
+    "gpu-accelerated",
+    "ssr-safe"
   ],
   "author": "Your Name <your.email@example.com>",
   "license": "MIT",
